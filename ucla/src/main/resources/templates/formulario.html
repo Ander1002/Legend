@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CRUD SPRING BOOT</title>
+</head>
+<body>
+	<div>
+		<form th:action="@{/save}" th:object="${acta}" method="POST">
+			<div></div>
+			<div>
+					<label>ID</label> <input type="text" th:field="*{id}" readonly="readonly" />
+				</div>
+			<div>
+					<label>Tipo de Sesion</label> <input type="text" th:field="*{tipoSesion}" />
+				</div>
+				<div>
+					<label>Descripcion</label> <input type="text" th:field="*{descripcion}" />
+				</div>
+				<div>
+					<label>Fecha</label> <input type="text" th:field="*{fecha}" />
+				</div>
+			<div>
+				<input type="submit" value="Guardar" /> <a th:href="@{/listar}">Regresar</a>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
