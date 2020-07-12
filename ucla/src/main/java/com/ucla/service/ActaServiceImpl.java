@@ -1,4 +1,4 @@
-package com.actas.ucla.service.impl;
+package com.ucla.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.actas.ucla.commons.GenericServiceApi;
-import com.actas.ucla.dao.api.ActaDaoApi;
-import com.actas.ucla.model.Acta;
+import com.ucla.InterfaceService.ActaDaoApi;
+import com.ucla.interfaces.GenericServiceApi;
+import com.ucla.model.Acta;
 
 @Service
 public class ActaServiceImpl implements GenericServiceApi {

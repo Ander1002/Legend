@@ -1,8 +1,9 @@
-package com.actas.ucla.commons;
+package com.ucla.interfaces;
 
-import com.actas.ucla.model.Acta;
 import java.util.List;
 import java.util.Optional;
+
+import com.ucla.model.Acta;
 
 public interface GenericServiceApi {
 

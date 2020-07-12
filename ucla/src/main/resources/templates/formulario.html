@@ -24,6 +24,24 @@
 				<input type="submit" value="Guardar" /> <a th:href="@{/listar}">Regresar</a>
 			</div>
 		</form>
+		
+	   <div>
+		<form th:action="@{/save}" th:object="${decanato}" method="POST">
+			<div></div>
+			<div>
+					<label>ID</label> <input type="text" th:field="*{id}" readonly="readonly" />
+				</div>
+			<div>
+					<label>Nombre</label> <input type="text" th:field="*{nombre}" />
+				</div>
+				<div>
+					<label>Ubicacion</label> <input type="text" th:field="*{ubicacion}" />
+				</div>
+			<div>
+				<input type="submit" value="Guardar" /> <a th:href="@{/listar}">Regresar</a>
+			</div>
+		</form>
+		</div>	
 	</div>
 </body>
 </html>

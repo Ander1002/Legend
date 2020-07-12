@@ -31,6 +31,27 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				</tr>
 			</tbody>
 		</table>
+		<table border="1">
+			<thead style="background-color: #5BA5EA">
+				<tr>
+					<th>#</th>
+					<th>Nombre</th>
+					<th>Ubicacion</th>
+					<th>Acciones</th>					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="decanato:${decanato}">
+				    <td th:text="${decanato.id}"></td>
+					<td th:text="${decanato.nombre}"></td>
+					<td th:text="${decanato.ubicacion}"></td>
+					<td>
+					<a th:href="@{/delete/}+${decanato.id}">eliminar</a>
+					<a th:href="@{/listar/}+${decanato.id}">editar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

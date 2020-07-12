@@ -1,4 +1,6 @@
-package com.actas.ucla.model;
+package com.ucla.model;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 
@@ -7,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -18,10 +23,10 @@ public class Acta {
 		
 	}
 
-	public Acta(Long id, String tipoSesion, String descripcion, String fecha, Decanato decanato) {
+	public Acta(Long id, String tipoServicio, String descripcion, Date fecha, Decanato decanato) {
 		super();
 		this.id = id;
-		this.tipoSesion = tipoSesion;
+		this.tipoServicio = tipoServicio;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.decanato = decanato;
@@ -29,47 +34,26 @@ public class Acta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column (name = "id")
+	@Column (name = "id", unique = true, nullable = false)
 	private Long id;
-	
-	@Column (name = "tipoSesion")
-	private String tipoSesion;
+
+	@Column (name = "tipoServicio")
+	private String tipoServicio;
 	
 	@Column (name = "descripcion")
 	private String descripcion;
 	
-	@Column (name = "fecha")
-	private String fecha;
+	 @CreationTimestamp
+	 @Column(updatable = false)
+	 private Date fecha;
 	
-	@ManyToOne
+	 @ManyToOne
     @JoinColumn(name="iddecanato", nullable=false)
     private Decanato decanato;
 	
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getTipoSesion() {
-		return tipoSesion;
-	}
-	public void setTipoSesion(String tipoSesion) {
-		this.tipoSesion = tipoSesion;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public String getFecha() {
-		return fecha;
-	}
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
 	public Decanato getDecanato() {
 		return decanato;
 	}
@@ -77,5 +61,29 @@ public class Acta {
 	public void setDecanato(Decanato decanato) {
 		this.decanato = decanato;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getTipoServicio() {
+		return tipoServicio;
+	}
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public Date getFecha() {
+		return fecha;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+
 	
 }

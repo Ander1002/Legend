@@ -1,4 +1,4 @@
-package com.actas.ucla.controller;
+package com.ucla.controller;
 
 import javax.validation.Valid;
 
@@ -6,29 +6,31 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.actas.ucla.commons.GenericServiceApi;
-import com.actas.ucla.model.Acta;
+import com.ucla.interfaces.GenericServiceApi;
+import com.ucla.model.Acta;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 @CrossOrigin("*")
 public class ActaController {
 	@Autowired
 	private GenericServiceApi service;
 	
-	@GetMapping("/listar")
-	public String listar(Model model) {
+	@GetMapping({"/listar", "/"})
+	public List<Acta> listar(Model model) {
 		List<Acta>acta=service.listar();
 		model.addAttribute("acta", acta);
-		return "index";
+		return acta;
 	}
 	
 	@GetMapping("/listar/{id}")
